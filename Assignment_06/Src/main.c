@@ -15,33 +15,47 @@
  *
  ******************************************************************************
  */
-
 #include <stdint.h>
 #include <stdio.h>
 #include "stm32f4xx.h"
 #include "system_stm32f4xx.h"
+#include "i2c.h"
+#include "i2c_lcd.h"
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
-#include "i2c_lcd.h"
-
 int main(void)
 {
-	int ret, i;
-	char str[32];
 	SystemInit();
-	ret = Lcd_Init();
-	if(ret) {
+	//int ret, count;
+	//char str[32];
+	SystemInit();
+	int ret = Lcd_Init();
+	if(ret)
+	{
+
+		while(1){
+		Lcd_WriteByte(LCD_CMD, LCD_DISP_SHIFT_LEFT);
 		Lcd_Puts(LCD_LINE1, "Vaishnavi Chirmade");
-		for(int i=1; i<=16 ; i++)
-		{
-			Lcd_shiftleft();
-			DelayMs(1000);
+		DelayMs(1000);
 		}
 
-	}
+		}
+
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -59,8 +59,8 @@ all: main-build
 main-build: assignment06.elf secondary-outputs
 
 # Tool invocations
-assignment06.elf assignment06.map: $(OBJS) $(USER_OBJS) /home/sunbeam/Desktop/GIT\ DATA/mcpi/mcpi_assignments/MCPI_Assignment/Assignment_06/STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "assignment06.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/sunbeam/Desktop/GIT DATA/mcpi/mcpi_assignments/MCPI_Assignment/Assignment_06/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="assignment06.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+assignment06.elf assignment06.map: $(OBJS) $(USER_OBJS) /home/sunbeam/STM32CubeIDE/workspace_1.16.1/assignment06/STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "assignment06.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/sunbeam/STM32CubeIDE/workspace_1.16.1/assignment06/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="assignment06.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
